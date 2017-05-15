@@ -2,22 +2,31 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Router, Route, browserHistory } from 'react-router';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  IndexRoute,
+  Redirect
+} from 'react-router-dom';
+import { browserHistory } from 'react-router';
 
 // route components
-import { App } from '../imports/ui/containers/App';
-import { EventsAttending } from '../imports/ui/containers/EventsAttending';
-import { EventsHosting } from '../imports/ui/containers/EventsHosting';
-import { EventPage } from '../imports/ui/containers/EventPage';
-import { Browse } from '../imports/ui/containers/Browse';
-import { CreateEvent } from '../imports/ui/containers/CreateEvent';
-import { NotFound } from '../imports/ui/containers/NotFound';
+import App from '../imports/ui/containers/App';
+import EventsAttending from '../imports/ui/containers/EventsAttending';
+import EventsHosting from '../imports/ui/containers/EventsHosting';
+import EventPage from '../imports/ui/containers/EventPage';
+import EventsList from '../imports/ui/containers/EventsList';
+import Browse from '../imports/ui/containers/Browse';
+import CreateEvent from '../imports/ui/containers/CreateEvent';
+import NotFound from '../imports/ui/containers/NotFound';
 
 
 Meteor.startup(() => {
   Meteor.autorun(() => {
     render(
-      <MuiThemeProvider muiTheme={muiTheme}>
+      <MuiThemeProvider>
         <Router history={browserHistory}>
           <App>
             <Switch>

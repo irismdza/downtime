@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { createContainer } from 'meteor/react-meteor-data';
+
+import NavMenu from '../../components/NavMenu';
 
 class App extends Component {
   render() {
     return (
-      <MuiThemeProvider>
-      </MuiThemeProvider>
+      <div>
+        {this.props.children}
+        <NavMenu />
+      </div>
     )
   }
 }
+
+App.propTypes = {
+  children: PropTypes.obj,
+};
 
 export default App;
