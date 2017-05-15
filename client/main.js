@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-<<<<<<< HEAD
 import {
   BrowserRouter as Router,
   Route,
@@ -12,9 +11,6 @@ import {
   Redirect
 } from 'react-router-dom';
 import { browserHistory } from 'react-router';
-=======
-import { BrowserRouter as Router, Route, Switch, browserHistory } from 'react-router';
->>>>>>> 37578c39513508a40648759549611ac48ba3d896
 
 // route components
 import App from '../imports/ui/containers/App';
