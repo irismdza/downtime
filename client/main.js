@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Router, Route, browserHistory } from 'react-router';
+import { BrowserRouter as Router, Route, Switch, browserHistory } from 'react-router';
 
 // route components
 import { App } from '../imports/ui/containers/App';
@@ -23,10 +23,10 @@ Meteor.startup(() => {
             <Switch>
               <Route exact path="/" component={Browse} />
               <Route exact path="/create-event" component={CreateEvent} />
-              <Route exact path="events" component={EventsList} />
-              <Route exact path="events/attending" component={EventsAttending} />
-              <Route exact path="events/hosting" component={EventsHosting} />
-              <Route exact path="events/:event_id/event" component={EventPage} />
+              <Route exact path="/events" component={EventsList} />
+              <Route exact path="/events/attending" component={EventsAttending} />
+              <Route exact path="/events/hosting" component={EventsHosting} />
+              <Route exact path="/events/:event_id/event" component={EventPage} />
               <Route path="*" component={NotFound} />
               {/*<Route exact path="profile/:user_id" component={UserProfile} />*/}
             </Switch>
