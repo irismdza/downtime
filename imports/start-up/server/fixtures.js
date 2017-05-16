@@ -6,7 +6,7 @@ Meteor.startup(() => {
   let userId = '';
   if(Meteor.users.find().count() === 0) {
     userId = Accounts.createUser({
-      username: 'mrsawyer',
+      username: 'princessLeia',
       password: '123456'
     })
   }
