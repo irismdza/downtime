@@ -14,6 +14,8 @@ import { browserHistory } from 'react-router';
 
 import muiTheme from './styles/mui-theme';
 
+import '../imports/start-up/accounts-config.js';
+
 // route components
 import App from '../imports/ui/containers/App';
 import EventPage from '../imports/ui/containers/EventPage';
