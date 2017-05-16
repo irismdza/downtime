@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 class NavMenu extends Component {
   render() {
     return (
-      <div>
+      <div className='main-navigation'>
         <Link to={'/'}>
           <FloatingActionButton><SocialPerson /></FloatingActionButton>
         </Link>

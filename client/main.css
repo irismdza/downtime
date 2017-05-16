@@ -6,3 +6,22 @@ body {
   padding: 10%;
 }
 
+.main-navigation {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  margin: 25px auto;
+}
+
+.browse-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.browse-icon-button {
+  flex: 20%;
+}
+
+.browse-event-card {
+  flex: 60%;
+}

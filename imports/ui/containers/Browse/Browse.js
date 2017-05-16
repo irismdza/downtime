@@ -8,10 +8,10 @@ import EventCard from '../../components/EventCard';
 class Browse extends Component {
   render() {
     return (
-      <div>
-        <IconButton><ContentClear /></IconButton>
-          <EventCard />
-        <IconButton><ActionFavorite /></IconButton>
+      <div className='browse-container'>
+        <IconButton className='browse-icon-button'><ContentClear /></IconButton>
+          <div className='browse-event-card'><EventCard /></div>
+        <IconButton className='browse-icon-button'><ActionFavorite /></IconButton>
       </div>
     );
   }

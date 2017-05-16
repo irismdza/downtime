@@ -8,9 +8,9 @@ import styles from './styles.css';
 class App extends Component {
   render() {
     return (
-      <div className={styles.app}>
+      <div className='app-container'>
         {this.props.children}
-        <NavMenu />
+        <div><NavMenu /></div>
       </div>
     )
   }
