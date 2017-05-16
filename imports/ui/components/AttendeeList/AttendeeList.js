@@ -29,7 +29,7 @@ class AttendeeList extends Component {
             rightIcon={<CommunicationChatBubble />}
           />
           <ListItem
-            primaryText="Darth Maul"
+            primaryText="Boba Fett"
             leftAvatar={<Avatar src="images/kerem-128.jpg" />}
             rightIcon={<CommunicationChatBubble />}
           />
