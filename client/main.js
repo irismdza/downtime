@@ -12,6 +12,8 @@ import {
 } from 'react-router-dom';
 import { browserHistory } from 'react-router';
 
+import muiTheme from './styles/mui-theme';
+
 // route components
 import App from '../imports/ui/containers/App';
 import EventPage from '../imports/ui/containers/EventPage';
@@ -24,7 +26,7 @@ import NotFound from '../imports/ui/containers/NotFound';
 Meteor.startup(() => {
   Meteor.autorun(() => {
     render(
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <Router history={browserHistory}>
           <App>
             <Switch>
