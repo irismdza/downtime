@@ -18,7 +18,6 @@ class EventCard extends Component {
             <CardText>
               Bring your sweaters and a smile
             </CardText>
-            <Confirmation />
           </Card>
       </div>
     );

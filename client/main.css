@@ -1,1 +1,8 @@
 /* CSS declarations go here */
+
+body {
+  background-color: whitesmoke;
+  font-family: Roboto, sans-serif;
+  padding: 10%;
+}
+
