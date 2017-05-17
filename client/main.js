@@ -30,6 +30,7 @@ Meteor.startup(() => {
     render(
       <MuiThemeProvider muiTheme={muiTheme}>
         <Router history={browserHistory}>
+          <App>
             <Switch>
               <Route exact path="/" component={Browse} />
               <Route exact path="/create-event" component={CreateEvent} />
@@ -38,6 +39,7 @@ Meteor.startup(() => {
               <Route path="*" component={NotFound} />
               {/*<Route exact path="profile/:user_id" component={UserProfile} />*/}
             </Switch>
+          </App>
         </Router>
       </MuiThemeProvider>,
       document.getElementById('root')

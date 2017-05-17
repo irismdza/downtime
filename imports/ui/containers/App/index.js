@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { createContainer } from 'meteor/react-meteor-data';
 
 import NavMenu from '../../components/NavMenu';
 import AccountsUIWrapper from '../../components/AccountsUIWrapper';
@@ -14,6 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className='app-wrapper'>
+        <AccountsUIWrapper />
         {this.props.children}
         <div><NavMenu /></div>
       </div>
@@ -27,16 +27,7 @@ App.propTypes = {
   currentUserId: PropTypes.string.isRequired,
 };
 
-export default createContainer(() => {
-
-  Meteor.subscribe('todos');
-
-  return {
-    currentUser: Meteor.user(),
-    currentUserId: Meteor.userId()
-  };
-}, App);
-
+export default App;
 
 /*
 <div className="login-wrapper">
