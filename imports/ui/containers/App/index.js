@@ -10,22 +10,14 @@ import { Events } from '../../../api/events';
 import styles from './styles.css';
 
 class App extends Component {
+  componentWillMount() {
+
+  }
   render() {
     return (
       <div className='app-wrapper'>
-        <div className="login-wrapper">
-          <AccountsUIWrapper />
-        </div>
-        { this.props.currentUser ? (
-        <div className='app-container'>
-          {this.props.children}
-          <div><NavMenu /></div>
-        </div>
-        ) : (
-          <div className="logged-out-message">
-            <p>Please sign in to see your what the happs is</p>
-          </div>
-        )}
+        {this.props.children}
+        <div><NavMenu /></div>
       </div>
     )
   }
@@ -33,14 +25,28 @@ class App extends Component {
 
 App.propTypes = {
   children: PropTypes.obj,
+  currentUser: PropTypes.object.isRequired,
+  currentUserId: PropTypes.string.isRequired,
 };
 
-export default createContainer(() => {
+export default App;
 
-  Meteor.subscribe('events');
+/*
+<div className="login-wrapper">
+          <AccountsUIWrapper />
+        </div>
+        {
+          !this.props.currentUser &&
+          <div className="logged-out-message">
+            <p>Please sign in to see what the happs is</p>
+          </div>
+        }
 
-  return {
-    currentUser: Meteor.user(),
-    events: Events.find({}).fetch()
-  };
-}, App);
+        {
+          this.props.currentUser &&
+          <div className='app-container'>
+            {this.props.children}
+            <div><NavMenu /></div>
+          </div>
+        }
+        */
