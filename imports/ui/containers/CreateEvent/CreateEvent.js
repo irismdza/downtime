@@ -13,7 +13,7 @@ class CreateEvent extends Component {
     };
   }
 
-  // add a new event to the database
+  //add a new event to the database
   addNewEvent(event) {
     event.preventDefault();
     Meteor.call('events.addNewEvent', this.state.eventInputValue);
@@ -22,7 +22,7 @@ class CreateEvent extends Component {
   render() {
     return (
       <div>
-        <form name="createEvent" value={this.state.eventInputValue} onSubmit={this.addNewEvent}>
+        <form name="createEventForm" value={this.state.eventInputValue} onSubmit={this.addNewEvent}>
         <TextField
           hintText="what do you want to do?"
         /><br />

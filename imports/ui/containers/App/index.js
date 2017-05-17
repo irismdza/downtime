@@ -4,20 +4,45 @@ import PropTypes from 'prop-types';
 import NavMenu from '../../components/NavMenu';
 import AccountsUIWrapper from '../../components/AccountsUIWrapper';
 
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Link,
+  IndexRoute,
+  Redirect
+} from 'react-router-dom';
+
+import { createContainer } from 'meteor/react-meteor-data';
+
+import EventPage from '../EventPage';
+import SortEventsContainer from '../SortEventsContainer';
+import Browse from '../Browse';
+import CreateEvent from '../CreateEvent';
+import NotFound from '../NotFound';
+
 import { Events } from '../../../api/events';
 
 import styles from './styles.css';
 
 class App extends Component {
-  componentWillMount() {
-
-  }
   render() {
     return (
       <div className='app-wrapper'>
         <AccountsUIWrapper />
-        {this.props.children}
-        <div><NavMenu /></div>
+        <Router>
+          <div>
+            <Switch>
+                <Route exact path="/" component={Browse} />
+                <Route exact path="/create-event" component={CreateEvent} />
+                <Route exact path="/events" component={SortEventsContainer} />
+                <Route exact path="/events/:event_id/event" component={EventPage} />
+                <Route path="*" component={NotFound} />
+                {/*<Route exact path="profile/:user_id" component={UserProfile} />*/}
+            </Switch>
+          <div><NavMenu /></div>
+          </div>
+        </Router>
       </div>
     )
   }
@@ -25,28 +50,13 @@ class App extends Component {
 
 App.propTypes = {
   children: PropTypes.obj,
-  currentUser: PropTypes.object.isRequired,
-  currentUserId: PropTypes.string.isRequired,
 };
 
-export default App;
+export default createContainer(() => {
 
-/*
-<div className="login-wrapper">
-          <AccountsUIWrapper />
-        </div>
-        {
-          !this.props.currentUser &&
-          <div className="logged-out-message">
-            <p>Please sign in to see what the happs is</p>
-          </div>
-        }
+  return {
+    currentUser: Meteor.user(),
+    currentUserId: Meteor.userId()
+  };
+}, App);
 
-        {
-          this.props.currentUser &&
-          <div className='app-container'>
-            {this.props.children}
-            <div><NavMenu /></div>
-          </div>
-        }
-        */
