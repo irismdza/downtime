@@ -26,6 +26,17 @@ import { Events } from '../../../api/events';
 import styles from './styles.css';
 
 class App extends Component {
+
+  requireAuth(nextState, replace){
+    console.log('yelllow')
+    if (!this.props.currentUser){
+      replace({
+      pathname: '/signin',
+      state: { nextPathname: nextState.location.pathname }
+    })
+    }
+  }
+
   render() {
     return (
       <div className='app-wrapper'>
@@ -34,9 +45,33 @@ class App extends Component {
           <div>
             <Switch>
                 <Route exact path="/" component={Browse} />
-                <Route exact path="/create-event" component={CreateEvent} />
-                <Route exact path="/events" component={SortEventsContainer} />
-                <Route exact path="/events/:event_id/event" component={EventPage} />
+                <Route
+                  exact path="/create-event"
+                  render={() => (
+                            this.props.currentUser ? (
+                              <CreateEvent />
+                            ) : (
+                              <Redirect to="/"/>
+                            )
+                          )} />
+                <Route
+                  exact path="/events"
+                  render={() => (
+                            this.props.currentUser ? (
+                              <SortEventsContainer />
+                            ) : (
+                              <Redirect to="/"/>
+                            )
+                          )} />
+                <Route
+                  exact path="/events/:event_id/event"
+                  render={() => (
+                            this.props.currentUser ? (
+                              <EventPage />
+                            ) : (
+                              <Redirect to="/"/>
+                            )
+                          )} />
                 <Route path="*" component={NotFound} />
                 {/*<Route exact path="profile/:user_id" component={UserProfile} />*/}
             </Switch>
