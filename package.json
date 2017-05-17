@@ -7,6 +7,7 @@
   "dependencies": {
     "babel-runtime": "^6.23.0",
     "bcrypt": "^1.0.2",
+    "gandalf-validator": "^0.8.4",
     "material-ui": "^0.18.1",
     "meteor-node-stubs": "~0.2.4",
     "react": "^15.5.4",
