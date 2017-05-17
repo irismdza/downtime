@@ -8,8 +8,6 @@ import muiTheme from './styles/mui-theme';
 
 import '../imports/start-up/accounts-config.js';
 
-// route components
-import MainLayout from '../imports/ui/layouts/MainLayout';
 import App from '../imports/ui/containers/App';
 
 injectTapEventPlugin();
@@ -18,9 +16,7 @@ Meteor.startup(() => {
   Meteor.autorun(() => {
     render(
       <MuiThemeProvider muiTheme={muiTheme}>
-          <MainLayout>
-            <App />
-          </MainLayout>
+        <App />
       </MuiThemeProvider>,
       document.getElementById('root')
     );

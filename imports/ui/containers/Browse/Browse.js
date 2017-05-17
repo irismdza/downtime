@@ -11,6 +11,12 @@ class Browse extends Component {
     return (
       <div>
       {
+        !this.props.currentUser &&
+        <div className="logged-out-message">
+          <p>Please sign in to explore things to do</p>
+        </div>
+      }
+      {
       !!this.props.currentUser &&
       <div className='browse-container'>
         <IconButton className='browse-icon-button'><ContentClear /></IconButton>
@@ -18,24 +24,10 @@ class Browse extends Component {
         <IconButton className='browse-icon-button'><ActionFavorite /></IconButton>
       </div>
     }
-    {
-      !this.props.currentUser &&
-      <div className="logged-out-message">
-        <p>Please sign in to see what the happs is</p>
-      </div>
-    }
     </div>
     );
   }
 }
 
-export default createContainer(() => {
-
-  // Meteor.subscribe('todos');
-
-  return {
-    currentUser: Meteor.user(),
-    currentUserId: Meteor.userId()
-  };
-}, Browse);
+export default Browse;
 
