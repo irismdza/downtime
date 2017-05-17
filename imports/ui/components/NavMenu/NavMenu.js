@@ -9,13 +9,13 @@ class NavMenu extends Component {
   render() {
     return (
       <div className='main-navigation'>
-        <Link to={'/'}>
+        <Link to='/'>
           <FloatingActionButton><SocialPerson /></FloatingActionButton>
         </Link>
-        <Link to={'/create-event'}>
+        <Link to='/create-event'>
           <FloatingActionButton><ContentCreate /></FloatingActionButton>
         </Link>
-        <Link to={'/events'}>
+        <Link to='/events'>
           <FloatingActionButton><BulletedList /></FloatingActionButton>
         </Link>
       </div>
