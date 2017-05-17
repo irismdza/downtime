@@ -5,6 +5,8 @@ import { createContainer } from 'meteor/react-meteor-data';
 import NavMenu from '../../components/NavMenu';
 import AccountsUIWrapper from '../../components/AccountsUIWrapper';
 
+import { Events } from '../../../api/events';
+
 import styles from './styles.css';
 
 class App extends Component {
@@ -35,9 +37,10 @@ App.propTypes = {
 
 export default createContainer(() => {
 
-  Meteor.subscribe('todos');
+  Meteor.subscribe('events');
 
   return {
-    currentUser: Meteor.user()
+    currentUser: Meteor.user(),
+    events: Events.find({}).fetch()
   };
 }, App);
