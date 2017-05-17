@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import NavMenu from '../../components/NavMenu';
 import AccountsUIWrapper from '../../components/AccountsUIWrapper';
 
+import { Events } from '../../../api/events';
+
 import styles from './styles.css';
 
 class App extends Component {
