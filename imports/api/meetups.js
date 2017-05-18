@@ -18,7 +18,6 @@ Meteor.methods({
 
 if (Meteor.isServer) {
   Meteor.publish('newMeetups', (seenMeetupIds = []) => {
-    console.log('IN PUBLISH');
-    return Events.find({ _id: { $nin: seenMeetupIds } });
+    return Meetups.find({ _id: { $nin: seenMeetupIds } });
   });
 }

@@ -89,7 +89,7 @@ export default createContainer(() => {
 
   if (newEventsCursor.ready()) {
     console.log('READY!', newEventsCursor);
-    console.log(Events.findOne());
+    console.log(Meetups.findOne());
   }
 
   return {

@@ -4,17 +4,16 @@ import IconButton from 'material-ui/IconButton';
 import Confirmation from '../Confirmation';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
-class MeetupInfoCard extends Component {
-  render() {
+const MeetupInfoCard = ({ meetup }) => {
     return (
       <div>
           <Card>
             <CardMedia
-              overlay={<CardTitle title="" subtitle="with Susan" />}
+              overlay={<CardTitle title={meetup.meetup} subtitle={meetup.createdBy} />}
             >
             </CardMedia>
-            <CardTitle title="11:00am" subtitle="When" />
-            <CardTitle title="City Park" subtitle="Where" />
+            <CardTitle title={meetup.time} subtitle="When" />
+            <CardTitle title={meetup.address} subtitle="Where" />
             <CardText>
               Bring your sweaters and a smile
             </CardText>
@@ -22,6 +21,5 @@ class MeetupInfoCard extends Component {
       </div>
     );
   }
-}
 
 export default MeetupInfoCard;
