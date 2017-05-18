@@ -80,7 +80,7 @@ class CreateMeetup extends Gandalf {
         { fields.address.element } <br />
         { fields.city.element } <br />
         { fields.time.element } <br />
-        <FlatButton onClick={() => this.handleSubmit()}>POST</FlatButton>
+        <button onClick={() => this.handleSubmit()}>POST</button>
       </form>
     </div>
     );
