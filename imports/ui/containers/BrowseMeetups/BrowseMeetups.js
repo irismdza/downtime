@@ -52,7 +52,7 @@ export default createContainer(() => {
       .fetch()
       .map(meetup =>  meetup.meetupId);
 
-    meetup = Meetups.findOne({ _id: { $nin: userMeetupArray } });
+    meetup = Meetups.findOne({ $and: [{createdBy: { $ne: Meteor.userId() }},{_id: { $nin: userMeetupArray }}]});
   }
 
   return {
