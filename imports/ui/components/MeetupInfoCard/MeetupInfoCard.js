@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
+import {Tabs, Tab} from 'material-ui/Tabs';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import IconButton from 'material-ui/IconButton';
 import Confirmation from '../Confirmation';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardHeader, CardTitle} from 'material-ui/Card';
 
 const MeetupInfoCard = ({ meetup }) => {
-    return (
-      <div>
-          <Card>
-            <CardMedia
-              overlay={<CardTitle title={meetup.meetup} subtitle={meetup.createdBy} />}
-            >
-            </CardMedia>
-            <CardTitle title={meetup.time} subtitle="When" />
-            <CardTitle title={meetup.address} subtitle="Where" />
-            <CardText>
-              Bring your sweaters and a smile
-            </CardText>
-          </Card>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Tabs>
+        <Tab label="Browse Meetups" />
+      </Tabs>
+      <Card>
+        <CardTitle title={meetup.meetup} subtitle="WHAT" />
+        <CardTitle title={meetup.time} subtitle="WHEN" />
+        <CardTitle title={meetup.address} subtitle="WHERE" />
+      </Card>
+    </div>
+  );
+}
 
 export default MeetupInfoCard;
