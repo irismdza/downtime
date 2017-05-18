@@ -17,7 +17,8 @@ Meteor.startup(() => {
       meetup: 'use the force',
       address: 'in a galaxy far, far away',
       city: 'Vancouver',
-      time: 'once upon a time'
+      time: 'once upon a time',
+      createdBy: 'userId'
     });
   }
 });
