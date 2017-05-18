@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Gandalf from 'gandalf-validator';
 
+import {Tabs, Tab} from 'material-ui/Tabs';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meetups } from '../../../api/meetups';
 
@@ -62,8 +63,7 @@ class CreateMeetup extends Gandalf {
 
     if (data) {
       Meteor.call('meetups.addNewMeetup', data);
-    }    // If form is invalid, all error messages will show automatically
-    // So you can simply exit the function
+    }
     if (!data) return;
   }
 
@@ -71,16 +71,18 @@ class CreateMeetup extends Gandalf {
     const fields = this.state.fields;
 
     return (
-      // <div>
-      <form>
-        <h1>post a meetup</h1>
+      <div>
+      <Tabs>
+        <Tab label="Post a new meetup" />
+      </Tabs>
+      <form className="create-meetup-form">
         { fields.meetup.element } <br />
         { fields.address.element } <br />
         { fields.city.element } <br />
         { fields.time.element } <br />
-        <button onClick={() => this.handleSubmit()}>Submit</button>
+        <FlatButton onClick={() => this.handleSubmit()}>POST</FlatButton>
       </form>
-    // </div>
+    </div>
     );
   }
 }
