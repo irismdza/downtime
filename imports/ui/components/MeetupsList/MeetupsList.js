@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 
-class EventsList extends Component {
+class MeetupsList extends Component {
   render() {
     return (
       <div>
@@ -61,4 +61,4 @@ class EventsList extends Component {
   }
 }
 
-export default EventsList;
+export default MeetupsList;
