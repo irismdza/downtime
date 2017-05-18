@@ -18,7 +18,7 @@ Meteor.startup(() => {
       address: 'in a galaxy far, far away',
       city: 'Vancouver',
       time: 'once upon a time',
-      createdBy: 'user_id'
+      createdBy: 'userId'
     });
   }
 });
