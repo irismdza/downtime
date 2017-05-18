@@ -3,25 +3,35 @@
 body {
   background-color: whitesmoke;
   font-family: Roboto, sans-serif;
-  padding: 10%;
 }
 
-.main-navigation {
-  display: flex;
-  justify-content: space-around;
-  width: 50%;
+.nav-menu-wrapper {
   margin: 25px auto;
+}
+
+.nav-menu-item {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
 }
 
 .browse-container {
   display: flex;
-  justify-content: space-around;
+  align-items: center;
 }
 
 .browse-icon-button {
-  flex: 20%;
+  flex-basis: 15%;
 }
 
-.browse-event-card {
-  flex: 60%;
+.browse-meetup-card {
+  flex: 85%;
+}
+
+.create-meetup-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0 10px 0;
 }
