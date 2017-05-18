@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Meetups } from '../../../api/events';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import IconButton from 'material-ui/IconButton';
 import Confirmation from '../Confirmation';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
-class EventCard extends Component {
+class MeetupInfoCard extends Component {
   render() {
     return (
       <div>
@@ -25,4 +24,4 @@ class EventCard extends Component {
   }
 }
 
-export default EventCard;
+export default MeetupInfoCard;
