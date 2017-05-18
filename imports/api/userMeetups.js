@@ -6,10 +6,11 @@ Meteor.methods({
   'userMeetups.addNewUserMeetup' (data) {
 
     userMeetups.insert({
-      meetupId: '',
-      userId: '',
+      meetupId: this.meetupId,
+      userId: this.userId,
       attending: boolean
     });
   }
 
 });
+

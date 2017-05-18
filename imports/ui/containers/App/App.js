@@ -85,6 +85,13 @@ class App extends Component {
 
 export default createContainer(() => {
 
+  const newEventsCursor = Meteor.subscribe('newMeetups', []);
+
+  if (newEventsCursor.ready()) {
+    console.log('READY!', newEventsCursor);
+    console.log(Events.findOne());
+  }
+
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId()
