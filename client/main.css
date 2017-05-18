@@ -28,6 +28,10 @@ body {
   flex: 85%;
 }
 
+.no-meetups-message {
+  text-align: center;
+}
+
 .create-meetup-form {
   display: flex;
   flex-direction: column;

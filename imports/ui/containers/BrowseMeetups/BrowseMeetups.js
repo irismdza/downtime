@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Tabs, Tab} from 'material-ui/Tabs';
 import IconButton from 'material-ui/IconButton';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ContentClear from 'material-ui/svg-icons/content/clear';
@@ -22,9 +23,14 @@ class BrowseMeetups extends Component {
     const { meetup } = this.props;
     return (
       <div>
+        <Tabs>
+          <Tab label="Browse Meetups" />
+        </Tabs>
         {
           !meetup &&
-          <div>Loading...</div>
+          <div className="no-meetups-message">
+            <h1>no more meetups right now...so post a new one!</h1>
+          </div>
         }
 
         {
