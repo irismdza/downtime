@@ -6,6 +6,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 import EventCard from '../../components/EventCard';
 
+
 class Browse extends Component {
   render() {
     return (
