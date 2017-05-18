@@ -4,10 +4,10 @@ import Gandalf from 'gandalf-validator';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { createContainer } from 'meteor/react-meteor-data';
-import { Events } from '../../../api/events';
+import { Meetups } from '../../../api/meetups';
 
 
-class CreateEvent extends Gandalf {
+class CreateMeetup extends Gandalf {
 
   constructor() {
     const fields = [
@@ -61,7 +61,7 @@ class CreateEvent extends Gandalf {
     event.preventDefault();
 
     if (data) {
-      Meteor.call('events.addNewEvent', data);
+      Meteor.call('meetups.addNewMeetup', data);
     }    // If form is invalid, all error messages will show automatically
     // So you can simply exit the function
     if (!data) return;
@@ -86,4 +86,4 @@ class CreateEvent extends Gandalf {
 }
 
 
-export default CreateEvent;
+export default CreateMeetup;
