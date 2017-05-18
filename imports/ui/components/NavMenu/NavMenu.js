@@ -7,23 +7,24 @@ import ContentCreate from 'material-ui/svg-icons/content/create';
 import BulletedList from 'material-ui/svg-icons/editor/format-list-bulleted';
 
 class NavMenu extends Component {
+
   render() {
     return (
-      <div className='main-navigation'>
+      <div className="nav-menu-wrapper">
         <BottomNavigation>
-          <Link to='/'>
-            <BottomNavigationItem
+          <Link to='/' className="nav-menu-item">
+            <BottomNavigationItem className="nav-menu-item-button"
               label="Profile"
               icon={<SocialPerson />}
             />
           </Link>
-          <Link to='/create-meetup'>
+          <Link to='/create-meetup' className="nav-menu-item">
             <BottomNavigationItem
               label="Post"
               icon={<ContentCreate />}
             />
           </Link>
-          <Link to='/meetups'>
+          <Link to='/meetups' className="nav-menu-item">
             <BottomNavigationItem
               label="Meetups"
               icon={<BulletedList />}
