@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
-import EventsList from '../../components/EventsList';
+import MeetupsList from '../../components/MeetupsList';
 import {Tabs, Tab} from 'material-ui/Tabs';
 
-class SortEventsContainer extends Component {
+class SortMeetupsContainer extends Component {
 
   render() {
     return (
       <div>
         <Tabs>
-          <Tab label="See All Events" >
+          <Tab label="See All Meetups" >
             <div>
-              <EventsList />
+              <MeetupsList />
             </div>
           </Tab>
-          <Tab label="Events I'm Hosting" >
+          <Tab label="Meetups I'm Hosting" >
             <div>
               <p>
                 This is another example tab.
@@ -21,7 +21,7 @@ class SortEventsContainer extends Component {
             </div>
           </Tab>
           <Tab
-            label="Events I'm Attending"
+            label="Meetups I'm Attending"
           >
             <div>
               <p>
@@ -35,4 +35,4 @@ class SortEventsContainer extends Component {
   }
 }
 
-export default SortEventsContainer;
+export default SortMeetupsContainer;
