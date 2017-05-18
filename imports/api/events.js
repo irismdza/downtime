@@ -3,13 +3,14 @@ import { Mongo } from 'meteor/mongo';
 export const Events = new Mongo.Collection('events');
 
 Meteor.methods({
-  'events.addNewEvent' (e) {
+  'events.addNewEvent' (data) {
 
     Events.insert({
-      meetup: 'meetupInputValue',
-      address: 'locationInputValue',
-      city: 'city',
-      time: 'timeInputValue'
+      meetup: data.meetup,
+      address: data.address,
+      city: data.city,
+      time: data.time,
+      createdBy: 'user_id',
     });
   }
 

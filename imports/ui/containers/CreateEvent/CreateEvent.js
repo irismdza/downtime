@@ -58,8 +58,11 @@ class CreateEvent extends Gandalf {
 
   handleSubmit() {
     const data = this.getCleanFormData();
+    event.preventDefault();
 
-    // If form is invalid, all error messages will show automatically
+    if (data) {
+      Meteor.call('events.addNewEvent', data);
+    }    // If form is invalid, all error messages will show automatically
     // So you can simply exit the function
     if (!data) return;
   }
@@ -75,7 +78,6 @@ class CreateEvent extends Gandalf {
         { fields.address.element } <br />
         { fields.city.element } <br />
         { fields.time.element } <br />
-        <span>{ fields.colour.errorMessage ? fields.colour.errorMessage : ''}</span>
         <button onClick={() => this.handleSubmit()}>Submit</button>
       </form>
     // </div>
