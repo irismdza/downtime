@@ -1,6 +1,5 @@
 import { Mongo } from 'meteor/mongo';
-
-export const Meetups = new Mongo.Collection('meetups');
+import { Meetups, UserMeetups } from './collections';
 
 Meteor.methods({
   'meetups.addNewMeetup' (data) {
@@ -17,7 +16,8 @@ Meteor.methods({
 });
 
 if (Meteor.isServer) {
-  Meteor.publish('newMeetups', (seenMeetupIds = []) => {
-    return Meetups.find({ _id: { $nin: seenMeetupIds } });
+  console.log("I AM ALIVE");
+  Meteor.publish('newMeetups', () => {
+    return Meetups.find();
   });
 }

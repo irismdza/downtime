@@ -21,7 +21,7 @@ import BrowseMeetups from '../BrowseMeetups';
 import CreateMeetup from '../CreateMeetup';
 import NotFound from '../NotFound';
 
-import { Meetups } from '../../../api/meetups';
+import { Meetups } from '../../../api/collections';
 
 import styles from './styles.css';
 
@@ -44,7 +44,13 @@ class App extends Component {
         <Router>
           <div>
             <Switch>
-                <Route exact path="/" component={BrowseMeetups} />
+                <Route exact path="/" render={() => (
+                            this.props.currentUser ? (
+                              <BrowseMeetups />
+                            ) : (
+                              <div> Sign In </div>
+                            )
+                          )} />
                 <Route
                   exact path="/create-meetup"
                   render={() => (

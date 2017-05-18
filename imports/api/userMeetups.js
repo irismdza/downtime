@@ -1,6 +1,5 @@
 import { Mongo } from 'meteor/mongo';
-
-export const UserMeetups = new Mongo.Collection('userMeetups');
+import { UserMeetups } from './collections';
 
 if (Meteor.isServer) {
 

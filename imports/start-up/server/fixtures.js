@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
-import { Meetups } from '../../api/meetups';
+import { Meetups } from '../../api/collections';
 
 Meteor.startup(() => {
 
