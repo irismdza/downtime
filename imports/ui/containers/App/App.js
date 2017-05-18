@@ -15,13 +15,13 @@ import {
 
 import { createContainer } from 'meteor/react-meteor-data';
 
-import EventPage from '../EventPage';
-import SortEventsContainer from '../SortEventsContainer';
-import Browse from '../Browse';
-import CreateEvent from '../CreateEvent';
+import MeetupInfoPage from '../MeetupInfoPage';
+import SortMeetupsContainer from '../SortMeetupsContainer';
+import BrowseMeetups from '../BrowseMeetups';
+import CreateMeetup from '../CreateMeetup';
 import NotFound from '../NotFound';
 
-import { Events } from '../../../api/events';
+import { Meetups } from '../../../api/meetups';
 
 import styles from './styles.css';
 
@@ -44,30 +44,30 @@ class App extends Component {
         <Router>
           <div>
             <Switch>
-                <Route exact path="/" component={Browse} />
+                <Route exact path="/" component={BrowseMeetups} />
                 <Route
-                  exact path="/create-event"
+                  exact path="/create-meetup"
                   render={() => (
                             this.props.currentUser ? (
-                              <CreateEvent />
+                              <CreateMeetup />
                             ) : (
                               <Redirect to="/"/>
                             )
                           )} />
                 <Route
-                  exact path="/events"
+                  exact path="/meetups"
                   render={() => (
                             this.props.currentUser ? (
-                              <SortEventsContainer />
+                              <SortMeetupsContainer />
                             ) : (
                               <Redirect to="/"/>
                             )
                           )} />
                 <Route
-                  exact path="/events/:event_id/event"
+                  exact path="/meetups/:meetup_id/meetup"
                   render={() => (
                             this.props.currentUser ? (
-                              <EventPage />
+                              <MeetupInfoPage />
                             ) : (
                               <Redirect to="/"/>
                             )
