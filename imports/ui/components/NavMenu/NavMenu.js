@@ -12,10 +12,10 @@ class NavMenu extends Component {
         <Link to='/'>
           <FloatingActionButton><SocialPerson /></FloatingActionButton>
         </Link>
-        <Link to='/create-event'>
+        <Link to='/create-meetup'>
           <FloatingActionButton><ContentCreate /></FloatingActionButton>
         </Link>
-        <Link to='/events'>
+        <Link to='/meetups'>
           <FloatingActionButton><BulletedList /></FloatingActionButton>
         </Link>
       </div>

@@ -1,11 +1,11 @@
 import { Mongo } from 'meteor/mongo';
 
-export const Events = new Mongo.Collection('events');
+export const Meetups = new Mongo.Collection('meetups');
 
 Meteor.methods({
-  'events.addNewEvent' (data) {
+  'meetups.addNewMeetup' (data) {
 
-    Events.insert({
+    Meetups.insert({
       meetup: data.meetup,
       address: data.address,
       city: data.city,

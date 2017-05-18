@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import EventCard from '../../components/EventCard';
+import MeetupInfoCard from '../../components/MeetupInfoCard';
 import AttendeeList from '../../components/AttendeeList';
 
 import styles from './styles.css';
 
-class EventPage extends Component {
+class MeetupInfoPage extends Component {
   render() {
     return (
-      <div className="event-page">
-        <div className="event-card">
+      <div className="meetup-page">
+        <div className="meetup-card">
           <h2>what's happening?</h2>
           <EventCard />
         </div>
@@ -21,4 +21,4 @@ class EventPage extends Component {
   }
 }
 
-export default EventPage;
+export default MeetupInfoPage;
