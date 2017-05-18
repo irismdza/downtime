@@ -5,8 +5,7 @@ import ContentClear from 'material-ui/svg-icons/content/clear';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import MeetupInfoCard from '../../components/MeetupInfoCard';
-import { Meetups } from '../../../api/meetups';
-import { UserMeetups } from '../../../api/userMeetups';
+import { Meetups, UserMeetups } from '../../../api/collections';
 
 
 class BrowseMeetups extends Component {
@@ -20,29 +19,46 @@ class BrowseMeetups extends Component {
   }
 
   render() {
+    const { meetup } = this.props;
     return (
-      <div className='browse-container'>
-        <IconButton onTouchTap={() => this.notAttendingMeetup()} className='browse-icon-button'><ContentClear /></IconButton>
-          <div className='browse-meetup-card'><MeetupInfoCard meetup={this.props.meetup} /></div>
-        <IconButton onTouchTap={() => this.attendingMeetup()} className='browse-icon-button'><ActionFavorite /></IconButton>
+      <div>
+        {
+          !meetup &&
+          <div>Loading...</div>
+        }
+
+        {
+          meetup &&
+          <div className='browse-container'>
+            <IconButton onTouchTap={() => this.notAttendingMeetup()} className='browse-icon-button'><ContentClear /></IconButton>
+              <div className='browse-meetup-card'><MeetupInfoCard meetup={this.props.meetup} /></div>
+            <IconButton onTouchTap={() => this.attendingMeetup()} className='browse-icon-button'><ActionFavorite /></IconButton>
+          </div>
+        }
       </div>
-    );
-  }
+    )
+  };
 }
 
 export default createContainer(() => {
+  let meetup;
 
-Meteor.subscribe('userMeetups', []);
-  console.log(UserMeetups.find().fetch());
-  const newMeetupsCursor = Meteor.subscribe('newMeetups', [{$in: UserMeetups.meetupId}]);
-  console.log('yo',Meetups);
-  console.log(UserMeetups.findOne())
-  const gotMeetup = newMeetupsCursor.ready();
+  const userMeetupsCursor = Meteor.subscribe('userMeetups', []);
+  const newMeetupsCursor = Meteor.subscribe('newMeetups');
+
+  if (userMeetupsCursor.ready() && newMeetupsCursor.ready()) {
+    const userMeetupArray = UserMeetups
+      .find({}, { fields:{ meetupId: 1 }})
+      .fetch()
+      .map(meetup =>  meetup.meetupId);
+
+    meetup = Meetups.findOne({ _id: { $nin: userMeetupArray } });
+  }
 
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
-    meetup: gotMeetup && Meetups.findOne()
+    meetup
   };
 }, BrowseMeetups);
 

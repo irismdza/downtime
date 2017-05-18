@@ -21,7 +21,7 @@ import BrowseMeetups from '../BrowseMeetups';
 import CreateMeetup from '../CreateMeetup';
 import NotFound from '../NotFound';
 
-import { Meetups } from '../../../api/meetups';
+import { Meetups } from '../../../api/collections';
 
 import styles from './styles.css';
 
