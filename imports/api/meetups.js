@@ -10,7 +10,6 @@ Meteor.methods({
       address: data.address,
       city: data.city,
       time: data.time,
-      createdBy: 'user_id',
     });
   }
 
