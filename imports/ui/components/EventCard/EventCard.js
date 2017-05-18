@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Meetups } from '../../../api/events';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import IconButton from 'material-ui/IconButton';
 import Confirmation from '../Confirmation';
@@ -10,7 +11,7 @@ class EventCard extends Component {
       <div>
           <Card>
             <CardMedia
-              overlay={<CardTitle title="Go To The Park" subtitle="with Susan" />}
+              overlay={<CardTitle title="" subtitle="with Susan" />}
             >
             </CardMedia>
             <CardTitle title="11:00am" subtitle="When" />
