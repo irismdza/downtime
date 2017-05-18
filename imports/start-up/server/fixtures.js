@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
-import { Events } from '../../api/events';
+import { Meetups } from '../../api/meetups';
 
 Meteor.startup(() => {
 
@@ -12,10 +12,10 @@ Meteor.startup(() => {
     })
   }
 
-  if(Events.find().count() === 0 ) {
-    Events.insert({
+  if(Meetups.find().count() === 0 ) {
+    Meetups.insert({
       meetup: 'use the force',
-      address: 'a galaxy far, far away',
+      address: 'in a galaxy far, far away',
       city: 'Vancouver',
       time: 'once upon a time'
     });
