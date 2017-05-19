@@ -60,7 +60,7 @@ class App extends Component {
                     render={() => (<SortMeetups />)} />
                   <Route
                     exact path="/meetups/:meetup_id/meetup"
-                    render={() => (<MeetupInfoPage />)} />
+                    component={MeetupInfoPage} />
                   <Route path="*" component={NotFound} />
                   {/*<Route exact path="profile/:user_id" component={UserProfile} />*/}
               </Switch>

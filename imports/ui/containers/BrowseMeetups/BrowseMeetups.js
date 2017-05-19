@@ -21,6 +21,7 @@ class BrowseMeetups extends Component {
 
   render() {
     const { meetup } = this.props;
+    console.log(meetup);
     return (
       <div className="browse-container">
         <Tabs>
@@ -29,7 +30,7 @@ class BrowseMeetups extends Component {
         {
           !meetup &&
           <div className="no-meetups-message">
-            <h1>can't find any meetups right now. post a new one!</h1>
+            <h1>Can't find any meetups right now. post a new one!</h1>
           </div>
         }
 
@@ -37,7 +38,7 @@ class BrowseMeetups extends Component {
           meetup &&
           <div className="meetup-info-container">
             <IconButton onTouchTap={() => this.notAttendingMeetup()} className="browse-icon-button"><ContentClear /></IconButton>
-              <div className="browse-meetup-card"><MeetupInfoCard meetup={this.props.meetup} /></div>
+              <div className="browse-meetup-card"><MeetupInfoCard meetup={meetup} /></div>
             <IconButton onTouchTap={() => this.attendingMeetup()} className="browse-icon-button"><ActionFavorite /></IconButton>
           </div>
         }
@@ -50,9 +51,9 @@ export default createContainer(() => {
   let meetup;
 
   const userMeetupsCursor = Meteor.subscribe('userMeetups');
-  const newMeetupsCursor = Meteor.subscribe('meetups');
+  const meetupsCursor = Meteor.subscribe('meetups');
 
-  if (userMeetupsCursor.ready() && newMeetupsCursor.ready()) {
+  if (userMeetupsCursor.ready() && meetupsCursor.ready()) {
     const userMeetupArray = UserMeetups
       .find({}, { fields:{ meetupId: 1 }})
       .fetch()

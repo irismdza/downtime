@@ -4,7 +4,6 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Meetups, UserMeetups } from '../../../api/collections';
 
 import MeetupsList from '../../components/MeetupsList';
-import {Tabs, Tab} from 'material-ui/Tabs';
 import FlatButton from 'material-ui/FlatButton';
 
 class SortMeetups extends Component {
