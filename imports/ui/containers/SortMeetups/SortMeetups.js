@@ -24,7 +24,8 @@ class SortMeetups extends Component {
   }
 
   showAttending() {
-
+    const meetupsAttending = Meetups.find().fetch();
+    this.setState();
   }
 
   render() {
@@ -42,19 +43,35 @@ class SortMeetups extends Component {
 export default createContainer(() => {
 
   let meetups = [];
+  let meetupsAttending;
   const meetupsCursor = Meteor.subscribe('meetups');
+  const userMeetupsCursor = Meteor.subscribe('userMeetups');
 
-  if(meetupsCursor.ready()) {
-    console.log('READY');
+  // if(meetupsCursor.ready()) {
+  //   console.log('READY');
+  //   meetups = Meetups.find({}).fetch();
+  //   console.log(meetups);
+  // }
+
+  if (userMeetupsCursor.ready() && meetupsCursor.ready()) {
     meetups = Meetups.find({}).fetch();
-    console.log(meetups);
+
+    const userMeetupArray = UserMeetups
+      .find({}, { fields:{ meetupId: 1 }})
+      .fetch()
+      .map(meetup =>  meetup.meetupId);
+
+    meetupsAttending = Meetups.find({ $and: [{createdBy: { $ne: Meteor.userId() }},{_id: { $nin: userMeetupArray }}]}).fetch();
   }
 
-  // console.log('current user + meetupsHosting', Meteor.userId(), meetupsHosting);
+  console.log('meetupsAttending', meetupsAttending);
+
+  // console.log('current user + meetups', Meteor.userId(), meetups);
 
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
-    meetups
+    meetups,
+    meetupsAttending
   };
 }, SortMeetups);
