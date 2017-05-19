@@ -14,27 +14,33 @@ class SortMeetups extends Component {
   }
 
   showAll() {
-    const allMeetups = Meetups.find().fetch();
+    const allMeetups = this.props.meetupsHosting.concat(this.props.meetupsAttending);
     this.setState({ meetups: allMeetups });
   }
 
   showMine() {
-    const myMeetups = Meetups.find({createdBy: {$eq: Meteor.userId()} }).fetch();
-    this.setState({ meetups: myMeetups });
+    // const meetupsHosting = Meetups.find({createdBy: {$eq: Meteor.userId()} }).fetch();
+    this.setState({ meetups: this.props.meetupsHosting });
   }
 
   showAttending() {
-    const meetupsAttending = Meetups.find().fetch();
-    this.setState();
+    this.setState({ meetups: this.props.meetupsAttending });
   }
 
   render() {
-    console.log(this.state);
+    console.log('this.state', this.state);
     return (
       <div>
         <FlatButton label="See All Meetups" onClick={() => this.showAll()} />
         <FlatButton label="See My Meetups" onClick={() => this.showMine()} />
-        <FlatButton label="See Meetups I'm Attending" />
+        <FlatButton label="See Meetups I'm Attending" onClick={() => this.showAttending()} />
+          { !this.state &&
+            <div> NOOOOO </div>
+          }
+          { this.state &&
+          <MeetupsList
+            meetups={this.state.meetups} />
+          }
       </div>
     )
   }
@@ -44,6 +50,7 @@ export default createContainer(() => {
 
   let meetups = [];
   let meetupsAttending;
+  let meetupsHosting;
   const meetupsCursor = Meteor.subscribe('meetups');
   const userMeetupsCursor = Meteor.subscribe('userMeetups');
 
@@ -56,12 +63,14 @@ export default createContainer(() => {
   if (userMeetupsCursor.ready() && meetupsCursor.ready()) {
     meetups = Meetups.find({}).fetch();
 
+    meetupsHosting = Meetups.find({createdBy: {$eq: Meteor.userId()} }).fetch();
+
     const userMeetupArray = UserMeetups
-      .find({}, { fields:{ meetupId: 1 }})
+      .find({attending: true }, {fields:{ meetupId: 1 }})
       .fetch()
       .map(meetup =>  meetup.meetupId);
 
-    meetupsAttending = Meetups.find({ $and: [{createdBy: { $ne: Meteor.userId() }},{_id: { $nin: userMeetupArray }}]}).fetch();
+    meetupsAttending = Meetups.find({ $and: [{createdBy: { $ne: Meteor.userId() }},{_id: { $in: userMeetupArray }}]}).fetch();
   }
 
   console.log('meetupsAttending', meetupsAttending);
@@ -72,6 +81,7 @@ export default createContainer(() => {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
     meetups,
-    meetupsAttending
+    meetupsAttending,
+    meetupsHosting
   };
 }, SortMeetups);
