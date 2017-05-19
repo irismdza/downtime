@@ -22,23 +22,23 @@ class BrowseMeetups extends Component {
   render() {
     const { meetup } = this.props;
     return (
-      <div>
+      <div className="browse-container">
         <Tabs>
           <Tab label="Browse Meetups" />
         </Tabs>
         {
           !meetup &&
           <div className="no-meetups-message">
-            <h1>no more meetups right now...so post a new one!</h1>
+            <h1>can't find any meetups right now. post a new one!</h1>
           </div>
         }
 
         {
           meetup &&
-          <div className='browse-container'>
-            <IconButton onTouchTap={() => this.notAttendingMeetup()} className='browse-icon-button'><ContentClear /></IconButton>
-              <div className='browse-meetup-card'><MeetupInfoCard meetup={this.props.meetup} /></div>
-            <IconButton onTouchTap={() => this.attendingMeetup()} className='browse-icon-button'><ActionFavorite /></IconButton>
+          <div className="meetup-info-container">
+            <IconButton onTouchTap={() => this.notAttendingMeetup()} className="browse-icon-button"><ContentClear /></IconButton>
+              <div className="browse-meetup-card"><MeetupInfoCard meetup={this.props.meetup} /></div>
+            <IconButton onTouchTap={() => this.attendingMeetup()} className="browse-icon-button"><ActionFavorite /></IconButton>
           </div>
         }
       </div>
