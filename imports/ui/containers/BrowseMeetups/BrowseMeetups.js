@@ -49,7 +49,7 @@ class BrowseMeetups extends Component {
 export default createContainer(() => {
   let meetup;
 
-  const userMeetupsCursor = Meteor.subscribe('userMeetups', []);
+  const userMeetupsCursor = Meteor.subscribe('userMeetups');
   const newMeetupsCursor = Meteor.subscribe('meetups');
 
   if (userMeetupsCursor.ready() && newMeetupsCursor.ready()) {
