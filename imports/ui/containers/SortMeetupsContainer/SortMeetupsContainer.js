@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
+
+import { Meetups, UserMeetups } from '../../../api/collections';
+
 import MeetupsList from '../../components/MeetupsList';
 import {Tabs, Tab} from 'material-ui/Tabs';
 
@@ -10,7 +14,9 @@ class SortMeetupsContainer extends Component {
         <Tabs>
           <Tab label="See All Meetups" >
             <div>
-              <MeetupsList />
+              <MeetupsList
+                meetupsHosting={this.props.meetupsHosting}
+                />
             </div>
           </Tab>
           <Tab label="Meetups I'm Hosting" >
@@ -35,4 +41,19 @@ class SortMeetupsContainer extends Component {
   }
 }
 
-export default SortMeetupsContainer;
+export default createContainer(() => {
+
+  Meteor.subscribe('meetups');
+
+  let meetupsHosting = Meetups
+      .find( {createdBy: {$eq: Meteor.userId()} } )
+      .fetch();
+
+  console.log('current user + meetupsHosting', Meteor.userId(), meetupsHosting);
+
+  return {
+    currentUser: Meteor.user(),
+    currentUserId: Meteor.userId(),
+    meetupsHosting
+    };
+}, SortMeetupsContainer);
