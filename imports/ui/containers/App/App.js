@@ -62,7 +62,9 @@ class App extends Component {
                     exact path="/meetups/:meetup_id/meetup"
                     component={MeetupInfoPage} />
                   <Route path="*" component={NotFound} />
-                  {/*<Route exact path="profile/:user_id" component={UserProfile} />*/}
+                  {/*<Route
+                    exact path="profile/:user_id"
+                    component={UserProfile} />*/}
               </Switch>
               <div><NavMenu /></div>
             </div>

@@ -12,21 +12,23 @@ class MeetupInfoPage extends Component {
     const { meetup } = this.props;
     return (
       <div className="meetup-page">
-        <div className="meetup-card">
-          <h2>what's happening?</h2>
           {
             !meetup &&
             <div> Loading </div>
           }
           {
             meetup &&
-            <MeetupInfoCard meetup={meetup} />
+          <div>
+            <div className="meetup-card">
+              <h2>what's happening?</h2>
+                <MeetupInfoCard meetup={meetup} />
+            </div>
+            <div className="attendee-list">
+              <h2>who's going?</h2>
+                <AttendeeList users={this.props.users} />
+            </div>
+          </div>
           }
-        </div>
-        <div className="attendee-list">
-          <h2>who's going?</h2>
-          <AttendeeList />
-        </div>
       </div>
     )
   };
@@ -35,18 +37,29 @@ class MeetupInfoPage extends Component {
 export default createContainer((props) => {
 
   let meetup;
-
-  const meetupsCursor = Meteor.subscribe('meetups');
-
+  let users;
   let meetupId = props.match.params.meetup_id;
 
-  if(meetupsCursor.ready()) {
+  const meetupsCursor = Meteor.subscribe('meetups');
+  const userMeetupsCursor = Meteor.subscribe('userMeetups');
+  const usersCursor = Meteor.subscribe('downtimeUsers');
+
+  if(userMeetupsCursor.ready() && meetupsCursor.ready() && usersCursor.ready()) {
+    const userMeetupArray = UserMeetups
+      .find({attending: true }, {fields:{ userId: 1 }})
+      .fetch()
+      .map(meetup =>  meetup.userId);
+      console.log(userMeetupArray);
+
     meetup = Meetups.findOne({_id: {$eq: meetupId} });
+    users = Meteor.users.find(({_id: { $in: userMeetupArray }})).fetch();
+    console.log(users);
   }
 
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
-    meetup
+    meetup,
+    users
   };
 }, MeetupInfoPage);
