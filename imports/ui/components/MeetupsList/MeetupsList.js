@@ -11,7 +11,8 @@ const MeetupsList = ({ meetupsHosting }) => {
           <div>
             <ListItem
               primaryText={meetupHosting.meetup}
-              secondaryText={`${meetupHosting.time} / ${meetupHosting.address} ${meetupHosting.city}`
+              secondaryText={
+                `${meetupHosting.time} / ${meetupHosting.address} / ${meetupHosting.city}`
               }
             />
             <Divider />

@@ -5,55 +5,52 @@ import { Meetups, UserMeetups } from '../../../api/collections';
 
 import MeetupsList from '../../components/MeetupsList';
 import {Tabs, Tab} from 'material-ui/Tabs';
+import FlatButton from 'material-ui/FlatButton';
 
-class SortMeetupsContainer extends Component {
+class SortMeetupsComponent extends Component {
+
+  componentWillReceiveProps(nextProps) {
+    this.state = { meetups: nextProps.meetups }
+  }
+
+  showAll() {
+    const allMeetups = Meetups.find().fetch();
+    this.setState({ meetups: allMeetups });
+  }
+
+  showMine() {
+    const myMeetups = Meetups.find({createdBy: {$eq: Meteor.userId()} }).fetch();
+    this.setState({ meetups: myMeetups });
+  }
 
   render() {
+    console.log(this.state);
     return (
       <div>
-        <Tabs>
-          <Tab label="See All Meetups" >
-            <div>
-              <MeetupsList
-                meetupsHosting={this.props.meetupsHosting}
-                />
-            </div>
-          </Tab>
-          <Tab label="Meetups I'm Hosting" >
-            <div>
-              <p>
-                This is another example tab.
-              </p>
-            </div>
-          </Tab>
-          <Tab
-            label="Meetups I'm Attending"
-          >
-            <div>
-              <p>
-                This is a third example tab.
-              </p>
-            </div>
-          </Tab>
-        </Tabs>
+        <FlatButton label="See All Meetups" onClick={() => this.showAll()} />
+        <FlatButton label="See My Meetups" onClick={() => this.showMine()} />
+        <FlatButton label="See Meetups I'm Attending" />
       </div>
-    );
+    )
   }
 }
 
 export default createContainer(() => {
 
-  Meteor.subscribe('meetups');
+  let meetups = [];
+  const meetupsCursor = Meteor.subscribe('meetups');
 
-  let meetupsHosting = Meetups
-      .find( {createdBy: {$eq: Meteor.userId()} } )
-      .fetch();
+  if(meetupsCursor.ready()) {
+    console.log('READY');
+    meetups = Meetups.find({}).fetch();
+    console.log(meetups);
+  }
 
-  console.log('current user + meetupsHosting', Meteor.userId(), meetupsHosting);
+  // console.log('current user + meetupsHosting', Meteor.userId(), meetupsHosting);
 
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
-    meetupsHosting
-    };
-}, SortMeetupsContainer);
+    meetups
+  };
+}, SortMeetupsComponent);

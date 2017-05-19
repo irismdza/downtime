@@ -17,7 +17,14 @@ body {
 
 .browse-container {
   display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.meetup-info-container {
+  display: flex;
   align-items: center;
+  padding-top: 50px;
 }
 
 .browse-icon-button {
@@ -26,6 +33,7 @@ body {
 
 .browse-meetup-card {
   flex: 85%;
+  text-align: center;
 }
 
 .no-meetups-message {
@@ -38,4 +46,8 @@ body {
   justify-content: center;
   align-items: center;
   padding: 50px 0 10px 0;
+}
+
+.MeetupInfoCard {
+  margin-top: 50px;
 }

@@ -17,7 +17,7 @@ Meteor.methods({
 
 if (Meteor.isServer) {
   console.log("I AM ALIVE");
-  Meteor.publish('newMeetups', () => {
+  Meteor.publish('meetups', () => {
     return Meetups.find();
   });
 }

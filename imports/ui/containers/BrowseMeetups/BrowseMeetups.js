@@ -50,7 +50,7 @@ export default createContainer(() => {
   let meetup;
 
   const userMeetupsCursor = Meteor.subscribe('userMeetups', []);
-  const newMeetupsCursor = Meteor.subscribe('newMeetups');
+  const newMeetupsCursor = Meteor.subscribe('meetups');
 
   if (userMeetupsCursor.ready() && newMeetupsCursor.ready()) {
     const userMeetupArray = UserMeetups
