@@ -12,6 +12,7 @@ class MeetupInfoPage extends Component {
     const { meetup } = this.props;
     return (
       <div className="meetup-page">
+        <div>
           {
             !meetup &&
             <div> Loading </div>
@@ -23,12 +24,22 @@ class MeetupInfoPage extends Component {
               <h2>what's happening?</h2>
                 <MeetupInfoCard meetup={meetup} />
             </div>
+          </div>
+          }
+        </div>
+        <div>
+          {
+            !this.props.users &&
+            <div> Getting Users </div>
+          }
+          {
+            this.props.users &&
             <div className="attendee-list">
               <h2>who's going?</h2>
                 <AttendeeList users={this.props.users} />
             </div>
-          </div>
           }
+        </div>
       </div>
     )
   };
@@ -46,7 +57,7 @@ export default createContainer((props) => {
 
   if(userMeetupsCursor.ready() && meetupsCursor.ready() && usersCursor.ready()) {
     const userMeetupArray = UserMeetups
-      .find({attending: true }, {fields:{ userId: 1 }})
+      .find({attending: true, meetupId: {$eq: meetupId}}, {fields:{ userId: 1 }})
       .fetch()
       .map(meetup =>  meetup.userId);
       console.log(userMeetupArray);
