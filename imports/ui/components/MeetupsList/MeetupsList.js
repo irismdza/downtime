@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 
 
-const MeetupsList = ({ meetupsHosting }) => {
+const MeetupsList = ({ meetups }) => {
   return (
     <div>
       <List>
-        {meetupsHosting.map(meetupHosting => (
+        {meetups.map(meetup => (
           <div>
-            <ListItem
-              primaryText={meetupHosting.meetup}
-              secondaryText={
-                `${meetupHosting.time} / ${meetupHosting.address} / ${meetupHosting.city}`
-              }
-            />
+            <Link to={`/meetups/${meetup._id}/meetup`}>
+              <ListItem
+                primaryText={meetup.meetup}
+                secondaryText={
+                  `${meetup.time} / ${meetup.address} / ${meetup.city}`
+                }
+              />
+            </Link>
             <Divider />
           </div>
         ))}
