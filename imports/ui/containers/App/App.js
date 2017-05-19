@@ -38,52 +38,43 @@ class App extends Component {
   }
 
   render() {
+    const isLoggedIn = this.props.currentUser;
+
     return (
-      <div className='app-wrapper'>
-        <AccountsUIWrapper />
-        <Router>
-          <div>
-            <Switch>
-                <Route exact path="/" render={() => (
-                            this.props.currentUser ? (
-                              <BrowseMeetups />
-                            ) : (
-                              <div> Sign In </div>
-                            )
-                          )} />
-                <Route
-                  exact path="/create-meetup"
-                  render={() => (
-                            this.props.currentUser ? (
-                              <CreateMeetup />
-                            ) : (
-                              <Redirect to="/"/>
-                            )
-                          )} />
-                <Route
-                  exact path="/meetups"
-                  render={() => (
-                            this.props.currentUser ? (
-                              <SortMeetupsContainer />
-                            ) : (
-                              <Redirect to="/"/>
-                            )
-                          )} />
-                <Route
-                  exact path="/meetups/:meetup_id/meetup"
-                  render={() => (
-                            this.props.currentUser ? (
-                              <MeetupInfoPage />
-                            ) : (
-                              <Redirect to="/"/>
-                            )
-                          )} />
-                <Route path="*" component={NotFound} />
-                {/*<Route exact path="profile/:user_id" component={UserProfile} />*/}
-            </Switch>
-            <div><NavMenu /></div>
+
+      <div className="app-wrapper">
+        <div className="login-wrapper">
+          <AccountsUIWrapper />
+        </div>
+
+        { isLoggedIn ? (
+          <Router>
+            <div className="logged-in-wrapper">
+              <Switch>
+                  <Route exact path="/" render={() => (<BrowseMeetups />)} />
+                  <Route
+                    exact path="/create-meetup"
+                    render={() => (<CreateMeetup />)} />
+                  <Route
+                    exact path="/meetups"
+                    render={() => (<SortMeetupsContainer />)} />
+                  <Route
+                    exact path="/meetups/:meetup_id/meetup"
+                    render={() => (<MeetupInfoPage />)} />
+                  <Route path="*" component={NotFound} />
+                  {/*<Route exact path="profile/:user_id" component={UserProfile} />*/}
+              </Switch>
+              <div><NavMenu /></div>
+            </div>
+          </Router>
+        ) : (
+
+          <div className="logged-out-message">
+            <h1>sign in to browse meetups around you!</h1>
           </div>
-        </Router>
+
+        )}
+
       </div>
     )
   }
@@ -91,11 +82,10 @@ class App extends Component {
 
 export default createContainer(() => {
 
-  const newEventsCursor = Meteor.subscribe('newMeetups', []);
+  const newEventsCursor = Meteor.subscribe('meetups', []);
 
   if (newEventsCursor.ready()) {
-    console.log('READY!', newEventsCursor);
-    console.log(Meetups.findOne());
+    // console.log(Meetups.findOne());
   }
 
   return {

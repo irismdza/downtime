@@ -5,20 +5,21 @@
 }
 
 .login-wrapper {
-  position: absolute;
-  left: 1rem;
-  top: 1rem;
+  /*position: static;
+  right: 1rem;
+  top: 1rem;*/
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* Account Login */
 /*-----------------------------------------*/
-/*
+
 .app-wrapper {
-  align-items: center;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   height: 100vh;
-}*/
+}
 
 .logged-out-message {
   margin: 1rem;
@@ -27,10 +28,17 @@
 
 /* Common */
 
-.login-wrapper {
+/*.login-wrapper {
   position: absolute;
   right: 1rem;
   top: 1rem;
+}*/
+
+.logged-in-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .login-close-text {
@@ -44,7 +52,7 @@
   visibility: visible;
 	position: absolute;
 	top: 0;
-	right: 0;
+	left: 0;
 }
 
 .accounts-dialog {
@@ -76,10 +84,11 @@
 }
 
 .login-link-text {
-  color: white;
+  color: gray;
   display: inline-block;
   margin-bottom: .5rem;
   margin-right: .5rem;
+  text-decoration: none;
 }
 
 .login-close-text {
@@ -122,7 +131,7 @@
 
 [id="login-buttons-logout"],
 .login-button-form-submit {
-  background-color: #a071b8;
+  background-color: rgb(255, 61, 0);
   color: white;
   display: block;
   padding: .25rem .5rem;
@@ -154,3 +163,8 @@
   font-size: .85rem;
 }
 
+#login-dropdown-list {
+  position: absolute !important;
+  top: 0px !important;
+  left: -177px !important;
+}
