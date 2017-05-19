@@ -61,7 +61,7 @@ export default createContainer(() => {
       .fetch()
       .map(meetup =>  meetup.meetupId);
 
-    meetupsAttending = Meetups.find({ $and: [{createdBy: { $ne: Meteor.userId() }},{_id: { $nin: userMeetupArray }}]}).fetch();
+    meetupsAttending = Meetups.find({ $and: [{createdBy: { $ne: Meteor.userId() }},{_id: { $in: userMeetupArray }}]}).fetch();
   }
 
   console.log('meetupsAttending', meetupsAttending);
