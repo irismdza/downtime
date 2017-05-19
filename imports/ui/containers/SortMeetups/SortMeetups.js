@@ -7,7 +7,7 @@ import MeetupsList from '../../components/MeetupsList';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import FlatButton from 'material-ui/FlatButton';
 
-class SortMeetupsComponent extends Component {
+class SortMeetups extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.state = { meetups: nextProps.meetups }
@@ -21,6 +21,10 @@ class SortMeetupsComponent extends Component {
   showMine() {
     const myMeetups = Meetups.find({createdBy: {$eq: Meteor.userId()} }).fetch();
     this.setState({ meetups: myMeetups });
+  }
+
+  showAttending() {
+
   }
 
   render() {
@@ -53,4 +57,4 @@ export default createContainer(() => {
     currentUserId: Meteor.userId(),
     meetups
   };
-}, SortMeetupsComponent);
+}, SortMeetups);

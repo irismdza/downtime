@@ -16,7 +16,7 @@ import {
 import { createContainer } from 'meteor/react-meteor-data';
 
 import MeetupInfoPage from '../MeetupInfoPage';
-import SortMeetupsContainer from '../SortMeetupsContainer';
+import SortMeetups from '../SortMeetups';
 import BrowseMeetups from '../BrowseMeetups';
 import CreateMeetup from '../CreateMeetup';
 import NotFound from '../NotFound';
@@ -57,7 +57,7 @@ class App extends Component {
                     render={() => (<CreateMeetup />)} />
                   <Route
                     exact path="/meetups"
-                    render={() => (<SortMeetupsContainer />)} />
+                    render={() => (<SortMeetups />)} />
                   <Route
                     exact path="/meetups/:meetup_id/meetup"
                     render={() => (<MeetupInfoPage />)} />
