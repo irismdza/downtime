@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Gandalf from 'gandalf-validator';
+import Snackbar from 'material-ui/Snackbar';
 
 import {Tabs, Tab} from 'material-ui/Tabs';
 import TextField from 'material-ui/TextField';
@@ -18,7 +19,7 @@ class CreateMeetup extends Gandalf {
         validators: ['required'],
         errorPropName: 'errorText',
         props: {
-          hintText: 'what would you like to do?',
+          hintText: `what would you like to do?`,
         },
         debounce: 500,
       },
@@ -28,7 +29,7 @@ class CreateMeetup extends Gandalf {
         validators: ['required'],
         errorPropName: 'errorText',
         props: {
-          hintText: 'what is the address?',
+          hintText: `what's the address?`,
         },
         debounce: 300,
       },
@@ -38,7 +39,7 @@ class CreateMeetup extends Gandalf {
         validators: ['required'],
         errorPropName: 'errorText',
         props: {
-          hintText: 'which city?',
+          hintText: `which city?`,
         },
         debounce: 300,
       },
@@ -48,13 +49,26 @@ class CreateMeetup extends Gandalf {
         validators: ['required'],
         errorPropName: 'errorText',
         props: {
-          hintText: 'what time?',
+          hintText: `what time?`,
         },
         debounce: 300,
       }
     ]
     super(fields);
   };
+
+  handleTouchTap() {
+    this.setState({
+      open: true,
+    });
+  };
+
+  handleRequestClose() {
+    this.setState({
+      open: false,
+    });
+  };
+
 
 
   handleSubmit() {
@@ -80,8 +94,14 @@ class CreateMeetup extends Gandalf {
         { fields.address.element } <br />
         { fields.city.element } <br />
         { fields.time.element } <br />
-        <button onClick={() => this.handleSubmit()}>POST</button>
+        <FlatButton onClick={() => this.handleSubmit()}>POST</FlatButton>
       </form>
+      <Snackbar
+          open={this.state.open}
+          message="New Meetup Posted"
+          autoHideDuration={4000}
+          onRequestClose={this.handleRequestClose}
+        />
     </div>
     );
   }
