@@ -4,6 +4,7 @@ import IconButton from 'material-ui/IconButton';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ContentClear from 'material-ui/svg-icons/content/clear';
 import { createContainer } from 'meteor/react-meteor-data';
+import Snackbar from 'material-ui/Snackbar';
 
 import MeetupInfoCard from '../../components/MeetupInfoCard';
 import { Meetups, UserMeetups } from '../../../api/collections';
@@ -11,7 +12,29 @@ import { Meetups, UserMeetups } from '../../../api/collections';
 
 class BrowseMeetups extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+  }
+
+  handleTouchTap() {
+    this.setState({
+      open: true,
+    });
+  };
+
+  handleRequestClose() {
+    this.setState({
+      open: false,
+    });
+  };
+
   attendingMeetup() {
+    this.setState({
+      open: true,
+    });
     Meteor.call('userMeetups.addAttendMeetup', this.props.meetup)
   }
 
@@ -42,6 +65,12 @@ class BrowseMeetups extends Component {
             <IconButton onTouchTap={() => this.attendingMeetup()} className="browse-icon-button"><ActionFavorite /></IconButton>
           </div>
         }
+        <Snackbar
+            open={this.state.open}
+            message="Event added to your calendar"
+            autoHideDuration={1000}
+            onRequestClose={() => this.handleRequestClose()}
+          />
       </div>
     )
   };
