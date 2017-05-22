@@ -20,6 +20,7 @@ import SortMeetups from '../SortMeetups';
 import BrowseMeetups from '../BrowseMeetups';
 import CreateMeetup from '../CreateMeetup';
 import NotFound from '../NotFound';
+import CreateUserProfile from '../CreateUserProfile';
 
 import { Meetups } from '../../../api/collections';
 
@@ -55,6 +56,9 @@ class App extends Component {
                   <Route
                     exact path="/create-meetup"
                     render={() => (<CreateMeetup />)} />
+                  <Route
+                    exact path="/create-profile"
+                    render={() => (<CreateUserProfile />)} />
                   <Route
                     exact path="/meetups"
                     render={() => (<SortMeetups />)} />
