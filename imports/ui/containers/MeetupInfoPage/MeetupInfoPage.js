@@ -64,7 +64,6 @@ export default createContainer((props) => {
 
     meetup = Meetups.findOne({_id: {$eq: meetupId} });
     users = Meteor.users.find(({_id: { $in: userMeetupArray }})).fetch();
-    console.log(users);
   }
 
   return {

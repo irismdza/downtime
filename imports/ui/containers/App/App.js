@@ -30,7 +30,6 @@ import styles from './styles.css';
 class App extends Component {
 
   requireAuth(nextState, replace){
-    console.log('yelllow')
     if (!this.props.currentUser){
       replace({
       pathname: '/signin',
@@ -66,10 +65,10 @@ class App extends Component {
                   <Route
                     exact path="/meetups/:meetup_id/meetup"
                     component={MeetupInfoPage} />
-                  <Route path="*" component={NotFound} />
                   <Route
-                    exact path="profile/:user_id"
+                    exact path="/profile/:user_id"
                     component={UserProfilePage} />
+                  <Route path="*" component={NotFound} />
               </Switch>
               <div><NavMenu /></div>
             </div>
@@ -90,10 +89,6 @@ class App extends Component {
 export default createContainer(() => {
 
   const newEventsCursor = Meteor.subscribe('meetups', []);
-
-  if (newEventsCursor.ready()) {
-    // console.log(Meetups.findOne());
-  }
 
   return {
     currentUser: Meteor.user(),

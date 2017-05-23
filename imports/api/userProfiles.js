@@ -1,15 +1,14 @@
 import { Mongo } from 'meteor/mongo';
 import { UserProfiles } from './collections';
 
-
 Meteor.methods({
   'userProfiles.addNewProfile' (data) {
 
     UserProfiles.insert({
-      name: data.meetup,
-      age: data.address,
+      name: data.fullname,
+      age: data.age,
       sex: data.city,
-      home: data.time,
+      home: data.home,
       user: this.userId,
     });
   }
