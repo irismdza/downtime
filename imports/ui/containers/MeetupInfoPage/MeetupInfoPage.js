@@ -8,6 +8,12 @@ import { Meetups, UserMeetups } from '../../../api/collections';
 import styles from './styles.css';
 
 class MeetupInfoPage extends Component {
+
+  deleteMeetup(data) {
+    Meteor.call('meetups.deleteMeetup', data);
+    console.log(data)
+  };
+
   render() {
     const { meetup } = this.props;
     return (
@@ -22,7 +28,9 @@ class MeetupInfoPage extends Component {
           <div>
             <div className="meetup-card">
               <h2>what's happening?</h2>
-                <MeetupInfoCard meetup={meetup} />
+                <MeetupInfoCard
+                  meetup={meetup}
+                  deleteMeetup={() => this.deleteMeetup()} />
             </div>
           </div>
           }

@@ -1,6 +1,10 @@
 import { Mongo } from 'meteor/mongo';
 import { Meetups, UserMeetups } from './collections';
 
+const userCanDeleteMeetup = (userId, meetupHostId) => (
+  userId && userId === meetupHostId
+);
+
 Meteor.methods({
   'meetups.addNewMeetup' (data) {
 
@@ -11,7 +15,15 @@ Meteor.methods({
       time: data.time,
       createdBy: this.userId,
     });
-  }
+  },
+  'meetups.deleteMeetup' (data) {
+
+    if (!userCanDeleteMeetup(this.userId, meetups.createdBy)) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    Meetups.remove(data._id)
+  },
 
 });
 
