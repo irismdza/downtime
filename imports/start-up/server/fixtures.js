@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
-import { Meetups } from '../../api/collections';
+import { Meetups, UserProfiles } from '../../api/collections';
 
 Meteor.startup(() => {
 
@@ -20,5 +20,15 @@ Meteor.startup(() => {
       time: 'once upon a time',
       createdBy: 'userId'
     });
+  }
+
+  if(UserProfiles.find().count() === 0 ) {
+    UserProfiles.insert({
+      name: 'Princess Leia',
+      age: '35',
+      sex: 'Female',
+      home: 'Space',
+      user: '1'
+    })
   }
 });

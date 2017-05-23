@@ -21,6 +21,7 @@ import BrowseMeetups from '../BrowseMeetups';
 import CreateMeetup from '../CreateMeetup';
 import NotFound from '../NotFound';
 import CreateUserProfile from '../CreateUserProfile';
+import UserProfilePage from '../UserProfilePage';
 
 import { Meetups } from '../../../api/collections';
 
@@ -66,9 +67,9 @@ class App extends Component {
                     exact path="/meetups/:meetup_id/meetup"
                     component={MeetupInfoPage} />
                   <Route path="*" component={NotFound} />
-                  {/*<Route
+                  <Route
                     exact path="profile/:user_id"
-                    component={UserProfile} />*/}
+                    component={UserProfilePage} />
               </Switch>
               <div><NavMenu /></div>
             </div>
