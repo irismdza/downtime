@@ -6,7 +6,7 @@ body {
 }
 
 .nav-menu-wrapper {
-  margin: 25px auto;
+  margin: 0 auto;
 }
 
 .nav-menu-item {
@@ -24,7 +24,7 @@ body {
 .meetup-info-container {
   display: flex;
   align-items: center;
-  padding-top: 50px;
+  height: 100%;
 }
 
 .browse-icon-button {
@@ -40,14 +40,52 @@ body {
   text-align: center;
 }
 
+.create-meetup-container {
+  background-color: white;
+}
+
 .create-meetup-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 50px 0 10px 0;
+  padding: 20px 0px;
 }
 
 .MeetupInfoCard {
   margin-top: 50px;
+}
+
+.meetups-list {
+  overflow: auto;
+  height: 400px;
+}
+
+.app-wrapper {
+  height: 100vh;
+}
+
+.root {
+  height: 100vh;
+}
+
+.logged-in-wrapper {
+  background-color: white;
+}
+
+.sort-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(255, 61, 0);
+  padding: 4px 0;
+}
+
+.sort-meetups-buttons {
+  background-color: rgb(255, 61, 0) !important;
+  color: white !important;
+  flex-basis: 33.5%;
+}
+
+.meetups-list-container {
+  overflow: auto;
 }

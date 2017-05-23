@@ -5,6 +5,8 @@ import { Meetups, UserMeetups } from '../../../api/collections';
 
 import MeetupsList from '../../components/MeetupsList';
 import FlatButton from 'material-ui/FlatButton';
+import {Tabs, Tab} from 'material-ui/Tabs';
+
 
 class SortMeetups extends Component {
 
@@ -27,17 +29,21 @@ class SortMeetups extends Component {
   render() {
     console.log('this.state', this.state);
     return (
-      <div>
-        <FlatButton label="See All Meetups" onClick={() => this.showAll()} />
-        <FlatButton label="See My Meetups" onClick={() => this.showHosting()} />
-        <FlatButton label="See Meetups I'm Attending" onClick={() => this.showAttending()} />
+      <div className="sort-meetups-container">
+        <div className="sort-buttons-container">
+          <FlatButton className="sort-meetups-buttons" label="See All My Meetups" onClick={() => this.showAll()} />
+          <FlatButton className="sort-meetups-buttons" label="See Meetups I'm Hosting" onClick={() => this.showHosting()} />
+          <FlatButton className="sort-meetups-buttons" label="See Meetups I'm Attending" onClick={() => this.showAttending()} />
+        </div>
+        <div className="meetups-list-container">
           { !this.state &&
-            <div> Loading your Meetups </div>
+            <div>Loading your meetups... </div>
           }
           { this.state &&
           <MeetupsList
             meetups={this.state.meetups} />
           }
+        </div>
       </div>
     )
   }

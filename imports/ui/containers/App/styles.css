@@ -168,3 +168,8 @@
   top: 0px !important;
   left: -177px !important;
 }
+
+.login-button {
+  background-color: rgb(255, 61, 0) !important;
+  border-color: rgb(255, 61, 0);
+}

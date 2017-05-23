@@ -5,6 +5,7 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ContentClear from 'material-ui/svg-icons/content/clear';
 import { createContainer } from 'meteor/react-meteor-data';
 import Snackbar from 'material-ui/Snackbar';
+import {Card, CardTitle} from 'material-ui/Card';
 
 import MeetupInfoCard from '../../components/MeetupInfoCard';
 import { Meetups, UserMeetups } from '../../../api/collections';
@@ -53,7 +54,10 @@ class BrowseMeetups extends Component {
         {
           !meetup &&
           <div className="no-meetups-message">
-            <h1>Can't find any meetups right now. post a new one!</h1>
+            <Card>
+              <CardTitle title="Want more meetups?" />
+              <CardTitle title="Post one of your own!" />
+            </Card>
           </div>
         }
 
@@ -67,7 +71,7 @@ class BrowseMeetups extends Component {
         }
         <Snackbar
             open={this.state.open}
-            message="Event added to your calendar"
+            message="Meetup added to your list!"
             autoHideDuration={1000}
             onRequestClose={() => this.handleRequestClose()}
           />

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Gandalf from 'gandalf-validator';
 import TextField from 'material-ui/TextField';
-import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import {Tabs, Tab} from 'material-ui/Tabs';
+import {Card, CardTitle} from 'material-ui/Card';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import { UserProfiles } from '../../../api/collections';
@@ -76,20 +77,27 @@ class CreateUserProfile extends Gandalf {
       <Tabs>
         <Tab label="Create a Profile" />
       </Tabs>
-      {
-        !this.props.users &&
-      <form className="create-user-profile-form">
-        { fields.fullname.element } <br />
-        { fields.age.element } <br />
-        { fields.sex.element } <br />
+      {/*{
+        !this.props.users &&*/}
+      <form className="create-user-profile-form create-meetup-form">
+        <CardTitle subtitle="FULL NAME" />
+        { fields.fullname.element }
+        <CardTitle subtitle="AGE" />
+        { fields.age.element }
+        <CardTitle subtitle="GENDER" />
+        { fields.sex.element }
+        <CardTitle subtitle="CITY" />
         { fields.home.element } <br />
-        <FlatButton onClick={() => this.handleSubmit()}>Create</FlatButton>
+        <RaisedButton
+          primary={true}
+          label="Create your profile"
+          onClick={() => this.handleSubmit()} />
       </form>
-      }
-      {
+      {/*}*/}
+      {/*{
         !!this.props.users &&
         <div> Good News, you have already created a Profile </div>
-      }
+      }*/}
     </div>
     );
   }

@@ -4,7 +4,9 @@ import Snackbar from 'material-ui/Snackbar';
 
 import {Tabs, Tab} from 'material-ui/Tabs';
 import TextField from 'material-ui/TextField';
-import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import {Card, CardTitle} from 'material-ui/Card';
+
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meetups } from '../../../api/meetups';
 
@@ -19,7 +21,7 @@ class CreateMeetup extends Gandalf {
         validators: ['required'],
         errorPropName: 'errorText',
         props: {
-          hintText: `what would you like to do?`,
+          hintText: `What would you like to do?`,
         },
         debounce: 500,
       },
@@ -29,7 +31,7 @@ class CreateMeetup extends Gandalf {
         validators: ['required'],
         errorPropName: 'errorText',
         props: {
-          hintText: `what's the address?`,
+          hintText: `Where do you want to meet?`,
         },
         debounce: 300,
       },
@@ -39,7 +41,7 @@ class CreateMeetup extends Gandalf {
         validators: ['required'],
         errorPropName: 'errorText',
         props: {
-          hintText: `which city?`,
+          hintText: `In which city?`,
         },
         debounce: 300,
       },
@@ -49,7 +51,7 @@ class CreateMeetup extends Gandalf {
         validators: ['required'],
         errorPropName: 'errorText',
         props: {
-          hintText: `what time?`,
+          hintText: `When do you want to meet?`,
         },
         debounce: 300,
       }
@@ -85,17 +87,26 @@ class CreateMeetup extends Gandalf {
     const fields = this.state.fields;
 
     return (
-      <div>
+      <div className="create-meetup-container">
       <Tabs>
         <Tab label="Post a new meetup" />
       </Tabs>
-      <form className="create-meetup-form">
-        { fields.meetup.element } <br />
-        { fields.address.element } <br />
-        { fields.city.element } <br />
-        { fields.time.element } <br />
-        <FlatButton onClick={() => this.handleSubmit()}>POST</FlatButton>
-      </form>
+      <div className="meetup-form-container">
+        <form className="create-meetup-form">
+          <CardTitle subtitle="YOUR MEETUP" />
+          { fields.meetup.element }
+          <CardTitle subtitle="ADDRESS" />
+          { fields.address.element }
+          <CardTitle subtitle="CITY" />
+          { fields.city.element }
+          <CardTitle subtitle="TIME" />
+          { fields.time.element } <br />
+          <RaisedButton
+            primary={true}
+            label="Post your meetup"
+            onClick={() => this.handleSubmit()} />
+        </form>
+      </div>
       <Snackbar
           open={this.state.open}
           message="New Meetup Posted"
