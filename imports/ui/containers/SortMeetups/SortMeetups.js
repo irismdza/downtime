@@ -37,7 +37,7 @@ class SortMeetups extends Component {
         </div>
         <div className="meetups-list-container">
           { !this.state &&
-            <div>Loading your meetups... </div>
+            <div>Loading your meetups <img src="/images/loading.gif" /></div>
           }
           { this.state &&
           <MeetupsList
@@ -61,9 +61,11 @@ export default createContainer(() => {
   if (userMeetupsCursor.ready() && meetupsCursor.ready()) {
 
     const userMeetupArray = UserMeetups
-      .find({attending: true }, {fields:{ meetupId: 1 }})
+      .find({attending: true}, {userId: { $eq: Meteor.userId() }}, {fields:{ meetupId: 1 }})
       .fetch()
       .map(meetup =>  meetup.meetupId);
+
+      console.log(userMeetupArray);
 
     meetupsHosting = Meetups.find({createdBy: {$eq: Meteor.userId()} }).fetch();
 

@@ -76,7 +76,8 @@ class App extends Component {
         ) : (
 
           <div className="logged-out-message">
-            <h1>sign in to browse meetups around you!</h1>
+            <img src="/images/downtime-logo.png" />
+            <h2>Sign in to browse meetups around you!</h2>
           </div>
 
         )}

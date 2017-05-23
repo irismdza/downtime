@@ -7,7 +7,7 @@ Meteor.methods({
     UserProfiles.insert({
       name: data.fullname,
       age: data.age,
-      sex: data.city,
+      sex: data.sex,
       home: data.home,
       user: this.userId,
     });

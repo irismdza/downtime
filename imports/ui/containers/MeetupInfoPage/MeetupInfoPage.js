@@ -21,7 +21,7 @@ class MeetupInfoPage extends Component {
         <div>
           {
             !meetup &&
-            <div> Loading </div>
+            <div> Loading <img src="/images/loading.gif" /></div>
           }
           {
             meetup &&

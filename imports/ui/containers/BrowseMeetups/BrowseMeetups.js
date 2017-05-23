@@ -88,7 +88,7 @@ export default createContainer(() => {
 
   if (userMeetupsCursor.ready() && meetupsCursor.ready()) {
     const userMeetupArray = UserMeetups
-      .find({}, { fields:{ meetupId: 1 }})
+      .find({ userId: { $eq: Meteor.userId() }}, {fields:{ meetupId: 1 }})
       .fetch()
       .map(meetup =>  meetup.meetupId);
 
