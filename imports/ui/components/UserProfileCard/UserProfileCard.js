@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import IconButton from 'material-ui/IconButton';
-import Confirmation from '../Confirmation';
 import {Card, CardTitle} from 'material-ui/Card';
 
 const MeetupInfoCard = ( { user } ) => {

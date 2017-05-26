@@ -141,7 +141,7 @@
 
 [id="login-buttons-logout"]:hover,
 .login-button-form-submit:hover {
-  background-color: #4ccbb0;
+  background-color: #4ccbb0 !important;
 }
 
 [id="login-email-label-and-input"],

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Gandalf from 'gandalf-validator';
-import Snackbar from 'material-ui/Snackbar';
 
+import Snackbar from 'material-ui/Snackbar';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';

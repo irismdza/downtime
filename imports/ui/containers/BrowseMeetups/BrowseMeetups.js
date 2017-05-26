@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+
 import {Tabs, Tab} from 'material-ui/Tabs';
 import IconButton from 'material-ui/IconButton';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ContentClear from 'material-ui/svg-icons/content/clear';
-import { createContainer } from 'meteor/react-meteor-data';
 import Snackbar from 'material-ui/Snackbar';
 import {Card, CardTitle} from 'material-ui/Card';
-
 import MeetupInfoCard from '../../components/MeetupInfoCard';
+
+import { createContainer } from 'meteor/react-meteor-data';
 import { Meetups, UserMeetups } from '../../../api/collections';
 
 
